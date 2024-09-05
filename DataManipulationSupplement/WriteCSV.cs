@@ -28,9 +28,10 @@ namespace DataMaipulation
 
         protected override void ExecuteSequence()
         {
-            using (StreamWriter writer = new StreamWriter(_input1.Value, append: _input3.Value)) // Change append to false to overwrite
+            using (StreamWriter writer = new StreamWriter(_input1.Value, append: _input3.Value)) 
             {
-                string row = string.Join(",", _input2.Value); // Combine all list items into a CSV row
+                //Combine all list items into a CSV row
+                string row = string.Join(",", _input2.Value); 
                 writer.WriteLine(row);
             }
 

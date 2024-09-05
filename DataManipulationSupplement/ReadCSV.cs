@@ -35,15 +35,18 @@ namespace DataMaipulation
         {
             List<Dictionary<string,string>> records = new List<Dictionary<string, string>>();
 
-            // Using CsvHelper to read the CSV file
+            //Using CsvHelper to read the CSV file.
             using (var reader = new StreamReader(_input1.Value))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true }))
             {
-                csv.Read();               // Read the first row (header row)
-                csv.ReadHeader();          // Prepare to read header values
-                var headers = csv.HeaderRecord;  // Get the header row
+                //Read the first row (header row)
+                csv.Read();
+                //Prepare to read header values
+                csv.ReadHeader();
+                //Get the header row
+                var headers = csv.HeaderRecord;  
 
-                // Read each row
+                //Read each row
                 while (csv.Read())
                 {
                     var row = new Dictionary<string, string>();
@@ -56,12 +59,11 @@ namespace DataMaipulation
                 }
             }
 
-            // Example: Search for a specific value by column name
-            var specificRow = records[_input2.Value]; // Access the first row
+            //Search for a specific row and convert to a list.
+            var specificRow = records[_input2.Value];
             var list = new List<string>(specificRow.Values);
            
             _output1.Value = list;
-
         }
     }
 }
