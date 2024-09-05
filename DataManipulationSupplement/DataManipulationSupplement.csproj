@@ -31,6 +31,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cognex.Designer.Core">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.Designer.Devices">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Devices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.Designer.Scripting">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Scripting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.Designer.Sequences">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Sequences.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,8 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="WriteCSV.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plugin.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
