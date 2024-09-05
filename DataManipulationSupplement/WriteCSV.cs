@@ -26,13 +26,6 @@ namespace DataMaipulation
             _input3 = CreateInputPin<Boolean>("append");
         }
 
-        //Block properties can be configured in various ways.
-        //Here, it is configured as an editable property accessed from the property editor. 
-        //[DisplayName("My Input Index")]
-       // [Category("Common")]
-        //[BlockProperty(ConfigurationOption.Input, ConfigurationOption.Editable)]
-       // public int myIndex { get; set; }
-
         protected override void ExecuteSequence()
         {
             using (StreamWriter writer = new StreamWriter(_input1.Value, append: _input3.Value)) // Change append to false to overwrite
