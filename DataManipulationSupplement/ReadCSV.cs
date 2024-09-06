@@ -21,6 +21,8 @@ namespace DataMaipulation
         private readonly GenericPin<int> _input2;
 
         private readonly GenericPin<List<string>> _output1;
+        private readonly GenericPin<List<string>> _output2;
+        private readonly GenericPin<int> _output3;
 
         public ReadCSV()
         {
@@ -29,41 +31,50 @@ namespace DataMaipulation
             _input2 = CreateInputPin<int>("rowIndex");
 
             _output1 = CreateOutputPin<List<string>>("row");
+            _output2 = CreateOutputPin<List<string>>("heading");
+            _output3 = CreateOutputPin<int>("rowCount");
         }
 
         protected override void ExecuteSequence()
         {
             List<Dictionary<string,string>> records = new List<Dictionary<string, string>>();
+            List<string> headersList = new List<string>();
+            int rowCount = 0;
 
             //Using CsvHelper to read the CSV file.
-            using (var reader = new StreamReader(_input1.Value))
-            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true }))
+            using (StreamReader reader = new StreamReader(_input1.Value))
+            using (CsvReader csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true }))
             {
                 //Read the first row (header row)
                 csv.Read();
                 //Prepare to read header values
                 csv.ReadHeader();
                 //Get the header row
-                var headers = csv.HeaderRecord;  
+                string[] headers = csv.HeaderRecord;  
+                
+                headersList.AddRange(headers);
 
                 //Read each row
                 while (csv.Read())
                 {
-                    var row = new Dictionary<string, string>();
+                    Dictionary<string, string> row = new Dictionary<string, string>();
                     foreach (var header in headers)
                     {
                         row[header] = csv.GetField(header);
 
                     }
                     records.Add(row);
+                    rowCount++;
                 }
             }
 
             //Search for a specific row and convert to a list.
-            var specificRow = records[_input2.Value];
-            var list = new List<string>(specificRow.Values);
+            Dictionary<string, string> specificRow = records[_input2.Value];
+            List<string> list = new List<string>(specificRow.Values);
            
             _output1.Value = list;
+            _output2.Value = headersList;
+            _output3.Value = rowCount;
         }
     }
 }
