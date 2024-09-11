@@ -32,24 +32,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cognex.Designer.Core">
-      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Core.dll</HintPath>
+      <HintPath>..\lib\Cognex.Designer.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Cognex.Designer.Devices">
-      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Devices.dll</HintPath>
+      <HintPath>..\lib\Cognex.Designer.Devices.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Cognex.Designer.Scripting">
-      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Scripting.dll</HintPath>
+      <HintPath>..\lib\Cognex.Designer.Scripting.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Cognex.Designer.Sequences">
-      <HintPath>..\..\..\..\..\..\Program Files\Cognex\Designer\4.5.0\Cognex.Designer.Sequences.dll</HintPath>
+      <HintPath>..\lib\Cognex.Designer.Sequences.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="CsvHelper">
-      <HintPath>..\ExtraLibraries\CsvHelper.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="CsvHelper, Version=33.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Threading.Tasks.Extensions">
-     <Private>False</Private>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
